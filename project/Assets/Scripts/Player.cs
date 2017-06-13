@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(PlayerMovement))]
 [RequireComponent(typeof(PlayerCombat))]
@@ -13,7 +15,7 @@ public class Player : MonoBehaviour
 	private Animator anim;
 	private Rigidbody2D rb;
 	
-	public int health;
+	public int health = 5;
 
     public float speed;
     public float walkSpeed = 5f;
@@ -74,6 +76,7 @@ public class Player : MonoBehaviour
 		
 		if(Input.GetKeyDown(KeyCode.Mouse0) && canMelee == true)
 		{
+			//TODO: Animate weapon
 			pc.MeleeAttack();
 			canMelee = false;
 		}
@@ -107,4 +110,37 @@ public class Player : MonoBehaviour
 
         pm.MoveHorizontal(velocity);
     }
+	
+	public void ApplyDamage(int damage)
+	{
+		health -= damage;
+		if(health <= 0)
+		{
+			KillYourself();
+		}
+		else
+		{
+			Respawn();
+		}
+	}
+	
+	void KillYourself()
+	{
+		Destroy(gameObject);
+		SceneManager.LoadScene("main menu");
+	}
+	
+	void Respawn()
+	{
+		transform.position = new Vector2(0, 1);
+	}
+	
+	void OnCollisionEnter2D(Collision2D collision)
+	{
+		GameObject obj = collision.gameObject;
+		if(obj.tag == "KillZone")
+		{
+			Respawn();
+		}
+	}
 }
