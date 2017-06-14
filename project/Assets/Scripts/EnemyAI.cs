@@ -41,30 +41,32 @@ public class EnemyAI : MonoBehaviour
 		}
 	}
 	
-	//void Movement()
-	//{
-	//	float xMov = Input.GetAxis("Horizontal");
-    //    float zMov = Input.GetAxis("Vertical");
-	//	
-	//	if(xMov != 0 || zMov != 0)
-	//	{
-	//		anim.SetBool("Moving", true);
-	//		Debug.Log("Moving...");
-	//	}
-	//	else
-	//	{
-	//		anim.SetBool("Moving", false);
-	//	}
-	//
-    //    //Vector2 movHorizontal = (target.transform.position), transform.position);
-	//	
-    //    //Vector2 movVertical = transform.forward * zMov;
-	//	//Vector2 velocity = (movHorizontal + movVertical) * speed;
-	//	
-	//	Vector2 velocity = moveHorizontal * speed;
-	//
-    //    em.MoveHorizontal(velocity);
-	//}
+	/*
+	void Movement()
+	{
+		float xMov = Input.GetAxis("Horizontal");
+        float zMov = Input.GetAxis("Vertical");
+		
+		if(xMov != 0 || zMov != 0)
+		{
+			anim.SetBool("Moving", true);
+			Debug.Log("Moving...");
+		}
+		else
+		{
+			anim.SetBool("Moving", false);
+		}
+	
+        //Vector2 movHorizontal = (target.transform.position), transform.position);
+		
+        //Vector2 movVertical = transform.forward * zMov;
+		//Vector2 velocity = (movHorizontal + movVertical) * speed;
+		
+		Vector2 velocity = moveHorizontal * speed;
+	
+        em.MoveHorizontal(velocity);
+	}
+	*/
 	
 	void OnCollisionEnter2D(Collision2D collision)
 	{
