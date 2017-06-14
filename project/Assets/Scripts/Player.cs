@@ -5,15 +5,12 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(PlayerMovement))]
-[RequireComponent(typeof(PlayerCombat))]
 [RequireComponent(typeof(Animator))]
 public class Player : MonoBehaviour
 {
     [SerializeField]
     private PlayerMovement pm;
-	private PlayerCombat pc;
 	private Animator anim;
-	private Rigidbody2D rb;
 	
 	public int health = 5;
 
@@ -22,19 +19,12 @@ public class Player : MonoBehaviour
     public float runSpeed = 10f;
     public float jumpSpeed = 7f;
 	
-	public float fireRate;
-	public float currentFireRate;
-	public bool canThrow = false;
-	public float meleeCooldown;
-	public float currentMeleeCooldown;
-	public bool canMelee = false;
+	public bool isGrounded;
 
     void Start()
     {
         pm = GetComponent<PlayerMovement>();
-		pc = GetComponent<PlayerCombat>();
 		anim = GetComponent<Animator>();
-		rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -51,40 +41,18 @@ public class Player : MonoBehaviour
 
         Movement();
 		
-		//Combat:
-		currentFireRate += Time.deltaTime;
-		if(currentFireRate >= fireRate)
+		//Jumping:
+		if(Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
 		{
-			canThrow = true;
-			currentFireRate = 0;
-		}
-		else if(currentFireRate < fireRate)
-		{
-			canThrow = false;
+			Debug.Log("Jumping...");
+			pm.Jump(jumpSpeed);
 		}
 		
-		currentMeleeCooldown += Time.deltaTime;
-		if(currentMeleeCooldown >= meleeCooldown)
+		//Escape to main menu:
+		if(Input.GetKeyDown(KeyCode.Escape))
 		{
-			canMelee = true;
-			currentMeleeCooldown = 0;
-		}
-		else if(currentMeleeCooldown <= meleeCooldown)
-		{
-			canMelee = false;
-		}
-		
-		if(Input.GetKeyDown(KeyCode.Mouse0) && canMelee == true)
-		{
-			//TODO: Animate weapon
-			pc.MeleeAttack();
-			canMelee = false;
-		}
-		
-		if(Input.GetKeyDown(KeyCode.Mouse1) && canThrow == true)
-		{
-			pc.Throw();
-			canThrow = false;
+			//Make sure main menu is always scene number 0!!!
+			SceneManager.LoadScene(0);
 		}
     }
 
@@ -141,6 +109,15 @@ public class Player : MonoBehaviour
 		if(obj.tag == "KillZone")
 		{
 			Respawn();
+		}
+	}
+	
+	void OnCollisionStay2D(Collision2D collision)
+	{
+		GameObject obj = collision.gameObject;
+		if(obj.layer == 8)
+		{
+			isGrounded = true;
 		}
 	}
 }

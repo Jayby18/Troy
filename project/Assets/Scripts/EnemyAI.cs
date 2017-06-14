@@ -37,7 +37,7 @@ public class EnemyAI : MonoBehaviour
 		
 		if(distance < lookAtDistance)
 		{
-			Debug.Log("Player near enemy.");
+			Debug.Log("Player near enemy");
 		}
 	}
 	
@@ -72,7 +72,11 @@ public class EnemyAI : MonoBehaviour
 	{
 		GameObject obj = collision.gameObject;
 		
-		if(obj.tag == "Player")
+		if(obj.tag == "PlayerWeapon")
+		{
+			//Hit by enemy
+		}
+		else if(obj.tag == "Player" && obj.tag != "PlayerWeapon")
 		{
 			obj.SendMessage("ApplyDamage", 1);
 		}
@@ -81,5 +85,9 @@ public class EnemyAI : MonoBehaviour
 	public void ApplyDamage(float damage)
 	{
 		health -= damage;
+		if(health <= 0)
+		{
+			Destroy(gameObject);
+		}
 	}
 }

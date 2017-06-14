@@ -2,9 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerCombat))]
 public class PlayerWeapon : MonoBehaviour 
 {
-	float weaponDamage;
+	public float weaponDamage = 10f;
+	
+	private GameObject player;
+	
+	void Start()
+	{
+		player = GameObject.FindWithTag("Player");
+		Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+	}
+	
+	void Update()
+	{
+		float xaxis = player.transform.position.x;
+		float yaxis = player.transform.position.y;
+		transform.position = new Vector2(xaxis + 0.15f, yaxis - 0.2f);
+	}
 	
 	void OnCollisionEnter2D(Collision2D collision)
 	{
@@ -12,6 +28,7 @@ public class PlayerWeapon : MonoBehaviour
 		
 		if(obj.tag == "Enemy")
 		{
+			Debug.Log("Hit enemy!");
 			obj.SendMessage("ApplyDamage", weaponDamage);
 		}
 	}

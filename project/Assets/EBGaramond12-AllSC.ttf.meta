@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 094cc701727bf2e4e9c75e09e387c03b
+timeCreated: 1497455662
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: EB Garamond 12 All SC
+  fontNames:
+  - EB Garamond 12 All SC
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

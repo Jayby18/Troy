@@ -20,4 +20,9 @@ public class PlayerMovement : MonoBehaviour
 	{
 		rb.MovePosition(rb.position + _velocity * Time.fixedDeltaTime);
 	}
+	
+	public void Jump(float _thrust)
+	{
+		//rb.AddForce(new Vector3(0, 100, 0), ForceMode.Impulse);
+	}
 }

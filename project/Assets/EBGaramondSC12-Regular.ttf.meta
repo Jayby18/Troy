@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 231e364bf7f367749ad1ace06be326db
+timeCreated: 1497455662
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: EB Garamond SC
+  fontNames:
+  - EB Garamond SC
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

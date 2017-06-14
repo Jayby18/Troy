@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 672861ac3ce508542ae4a1b94debc43a
+timeCreated: 1497455662
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: EB Garamond
+  fontNames:
+  - EB Garamond
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 35ffe6b286da8ba45bf95a8d891a118f, type: 3}
+  - {fileID: 12800000, guid: 10bb427cc3e12ae4baa18d1bfc0fc528, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
