@@ -19,6 +19,9 @@ public class PlayerCombat : MonoBehaviour
 	public float currentMeleeCooldown;
 	public bool canMelee = false;
 	
+	public int currentAmmo;
+	public static int maxAmmo;
+	
 	void Start()
 	{
 		player = GameObject.FindWithTag("Player");
@@ -30,11 +33,11 @@ public class PlayerCombat : MonoBehaviour
 	void Update()
 	{
 		currentFireRate += Time.deltaTime;
-		if(currentFireRate >= fireRate)
+		if(currentFireRate >= fireRate && currentAmmo > 0)
 		{
 			canThrow = true;
 		}
-		else if(currentFireRate < fireRate)
+		else if(currentFireRate < fireRate || currentAmmo <= 0)
 		{
 			canThrow = false;
 		}
@@ -47,6 +50,15 @@ public class PlayerCombat : MonoBehaviour
 		else if(currentMeleeCooldown <= meleeCooldown)
 		{
 			canMelee = false;
+		}
+		
+		if(anim.GetBool("MeleeAttacking") == true)
+		{
+			player.GetComponent<Player>().isAttacking = true;
+		}
+		else
+		{
+			player.GetComponent<Player>().isAttacking = false;
 		}
 		
 		if(Input.GetKeyDown(KeyCode.Mouse0) && canMelee == true)
@@ -81,5 +93,7 @@ public class PlayerCombat : MonoBehaviour
 		Vector3 addY = new Vector3(0f, 0.2f, 0f);
 		Vector3 spawnPoint = gameObject.transform.position + addY;
 		Instantiate(throwable, spawnPoint, gameObject.transform.rotation);
+		
+		currentAmmo--;
 	}
 }

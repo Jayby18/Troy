@@ -39,7 +39,7 @@ public class EnemyAI : MonoBehaviour
 		Vector2 direction = targetTransform.position - target.transform.position;
 		RaycastHit hit;
 		
-		Debug.Log(direction);
+		//.Log(direction);
 		
 		if(distance < lookAtDistance)
 		{
@@ -91,12 +91,9 @@ public class EnemyAI : MonoBehaviour
 	{
 		GameObject obj = collision.gameObject;
 		
-		if(obj.tag == "PlayerWeapon")
+		if(obj.tag == "Player" && obj.GetComponent<Player>().isAttacking == false)
 		{
-			//Hit by enemy
-		}
-		else if(obj.tag == "Player" && obj.tag != "PlayerWeapon")
-		{
+			Debug.Log("Hit player");
 			obj.SendMessage("ApplyDamage", 1);
 		}
 	}

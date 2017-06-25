@@ -17,9 +17,11 @@ public class PlayerWeapon : MonoBehaviour
 	
 	void Update()
 	{
+		/*
 		float xaxis = player.transform.position.x;
 		float yaxis = player.transform.position.y;
-		transform.position = new Vector2(xaxis + 0.15f, yaxis - 0.2f);
+		transform.position = new Vector2(xaxis + 0.51f, yaxis + 0.246f);
+		*/
 	}
 	
 	void OnCollisionEnter2D(Collision2D collision)

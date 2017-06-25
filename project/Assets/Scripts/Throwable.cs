@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(CircleCollider2D))]
+[RequireComponent(typeof(PolygonCollider2D))]
 public class Throwable : MonoBehaviour 
 {
 	private Rigidbody2D rb;

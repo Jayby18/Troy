@@ -44,6 +44,15 @@ public class DialogManager : MonoBehaviour
 			HideDialogHolder();
 		}
 	}
+		
+	void SetupText()
+	{
+		dialogHolder = GameObject.Find("Dialog Holder");
+		dialogText = GameObject.Find("Dialog Text").GetComponent<Text>();
+		
+		textLines = (textFile.text.Split('\n'));
+		endAtLine = textLines.Length - 1;
+	}
 	
 	void Update()
 	{
@@ -86,15 +95,6 @@ public class DialogManager : MonoBehaviour
 		textFile = _textFile;
 		SetupText();
 		ShowDialogHolder();
-	}
-	
-	void SetupText()
-	{
-		dialogHolder = GameObject.Find("Dialog Holder");
-		dialogText = GameObject.Find("Dialog Text").GetComponent<Text>();
-		
-		textLines = (textFile.text.Split('\n'));
-		endAtLine = textLines.Length - 1;
 	}
 	
 	public int GetCurrentLine()

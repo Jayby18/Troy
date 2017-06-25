@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private PlayerMovement pm;
 	private Animator anim;
+	private SpriteRenderer rend;
+	public PlayerCombat pc;
 	
 	public int health = 5;
 
@@ -20,11 +22,15 @@ public class Player : MonoBehaviour
     public float jumpSpeed = 7f;
 	
 	public bool isGrounded;
+	
+	public bool isAttacking;
 
     void Start()
     {
         pm = GetComponent<PlayerMovement>();
 		anim = GetComponent<Animator>();
+		rend = GetComponentInChildren<SpriteRenderer>();
+		pc = GetComponentInChildren<PlayerCombat>();
     }
 
     void Update()
@@ -70,6 +76,15 @@ public class Player : MonoBehaviour
 		{
 			anim.SetBool("Moving", false);
 		}
+		
+		if(xMov < 0)
+		{
+			rend.flipX = true;
+		}
+		else if(xMov > 0)
+		{
+			rend.flipX = false;
+		}
 
         Vector2 movHorizontal = transform.right * xMov;
         Vector2 movVertical = transform.forward * zMov;
@@ -85,6 +100,10 @@ public class Player : MonoBehaviour
 		if(health <= 0)
 		{
 			KillYourself();
+		}
+		else if(health == 1)
+		{
+			rend.color = Color.red;
 		}
 		else
 		{
@@ -102,32 +121,5 @@ public class Player : MonoBehaviour
 	void Respawn()
 	{
 		transform.position = new Vector2(0, 1);
-	}
-	
-	void OnCollisionEnter2D(Collision2D collision)
-	{
-		GameObject obj = collision.gameObject;
-		if(obj.tag == "KillZone")
-		{
-			ApplyDamage(1);
-		}
-	}
-	
-	void OnCollisionStay2D(Collision2D collision)
-	{
-		GameObject obj = collision.gameObject;
-		if(obj.layer == 8)
-		{
-			isGrounded = true;
-		}
-	}
-	
-	void OnCollisionExit2D(Collision2D collision)
-	{
-		GameObject obj = collision.gameObject;
-		if(obj.layer == 8)
-		{
-			isGrounded = false;
-		}
 	}
 }

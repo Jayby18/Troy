@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\HUDManager.cs" />
      <Compile Include="Assets\Scripts\MainMenuScript.cs" />
      <Compile Include="Assets\Scripts\Player\Player.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerBody.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerCombat.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerWeapon.cs" />
