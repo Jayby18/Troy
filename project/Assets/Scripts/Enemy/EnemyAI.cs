@@ -13,21 +13,13 @@ public class EnemyAI : MonoBehaviour
 	private Animator anim;
 	private Rigidbody2D rb;
 	
-	public GameObject target;
-	public Transform targetTransform;
-	
 	public float health = 100f;
-	float distance;
-	float lookAtDistance = 15.0f;
-	float attackRange = 1.0f;
-	float moveSpeed = 5.0f;
-	float damping = 6.0f;
+	public float moveSpeed = 5.0f;
+	
+	public bool moveRight = true;
 	
 	void Start()
 	{
-		target = GameObject.FindWithTag("Player");
-		targetTransform = target.GetComponent<Transform>();
-		
 		em = GetComponent<EnemyMovement>();
 		ec = GetComponent<EnemyCombat>();
 		anim = GetComponent<Animator>();
@@ -35,66 +27,43 @@ public class EnemyAI : MonoBehaviour
 	
 	void Update()
 	{
-		distance = Vector2.Distance(target.transform.position, transform.position);
-		Vector2 direction = targetTransform.position - target.transform.position;
-		RaycastHit hit;
-		
-		//.Log(direction);
-		
-		if(distance < lookAtDistance)
+		if(moveRight == true)
 		{
-			//Player is nearby
-		}
-		
-		//Check if any objects between player and enemy
-		if(Physics.Raycast(transform.position, direction, out hit))
-		{
-			if(hit.transform == targetTransform)
-			{
-				Debug.Log("Nothing between player and enemy");
-			}
-			else
-			{
-				Debug.Log("Something between player and enemy");
-			}
-		}
-	}
-	
-	/*
-	void Movement()
-	{
-		float xMov = Input.GetAxis("Horizontal");
-        float zMov = Input.GetAxis("Vertical");
-		
-		if(xMov != 0 || zMov != 0)
-		{
-			anim.SetBool("Moving", true);
-			Debug.Log("Moving...");
+			transform.right = Vector3.right;
 		}
 		else
 		{
-			anim.SetBool("Moving", false);
+			transform.right = Vector3.left;
 		}
+		Movement();
+	}
 	
-        Vector2 movHorizontal = (target.transform.position), transform.position);
-		
-        Vector2 movVertical = transform.forward * zMov;
-		Vector2 velocity = (movHorizontal + movVertical) * speed;
-		
-		Vector2 velocity = movHorizontal * speed;
+	void Movement()
+	{
+		Vector2 velocity = transform.right * moveSpeed;
 	
         em.MoveHorizontal(velocity);
 	}
-	*/
 	
 	void OnCollisionEnter2D(Collision2D collision)
 	{
 		GameObject obj = collision.gameObject;
 		
-		if(obj.tag == "Player" && obj.GetComponent<Player>().isAttacking == false)
+		if(obj.tag == "Player")
 		{
 			Debug.Log("Hit player");
 			obj.SendMessage("ApplyDamage", 1);
+		}
+		else if(obj.layer == 9)
+		{
+			if(moveRight == true)
+			{
+				moveRight = false;
+			}
+			else
+			{
+				moveRight = true;
+			}
 		}
 	}
 	

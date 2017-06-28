@@ -52,15 +52,6 @@ public class PlayerCombat : MonoBehaviour
 			canMelee = false;
 		}
 		
-		if(anim.GetBool("MeleeAttacking") == true)
-		{
-			player.GetComponent<Player>().isAttacking = true;
-		}
-		else
-		{
-			player.GetComponent<Player>().isAttacking = false;
-		}
-		
 		if(Input.GetKeyDown(KeyCode.Mouse0) && canMelee == true)
 		{
 			MeleeAttack();

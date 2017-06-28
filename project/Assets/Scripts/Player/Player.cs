@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     private PlayerMovement pm;
 	private Animator anim;
 	private SpriteRenderer rend;
-	public PlayerCombat pc;
+	private PlayerCombat pc;
 	
 	public int health = 5;
 
@@ -22,8 +22,6 @@ public class Player : MonoBehaviour
     public float jumpSpeed = 7f;
 	
 	public bool isGrounded;
-	
-	public bool isAttacking;
 
     void Start()
     {
@@ -121,5 +119,36 @@ public class Player : MonoBehaviour
 	void Respawn()
 	{
 		transform.position = new Vector2(0, 1);
+	}
+	
+	void OnCollisionEnter2D(Collision2D collision)
+	{
+		GameObject obj = collision.gameObject;
+		if(obj.tag == "KillZone")
+		{
+			ApplyDamage(1);
+		}
+		else if(obj.tag == "ThrowablePickup")
+		{
+			pc.currentAmmo++;
+		}
+	}
+	
+	void OnCollisionStay2D(Collision2D collision)
+	{
+		GameObject obj = collision.gameObject;
+		if(obj.layer == 8)
+		{
+			isGrounded = true;
+		}
+	}
+	
+	void OnCollisionExit2D(Collision2D collision)
+	{
+		GameObject obj = collision.gameObject;
+		if(obj.layer == 8)
+		{
+			isGrounded = false;
+		}
 	}
 }
