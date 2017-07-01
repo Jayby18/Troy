@@ -21,20 +21,7 @@ public class DialogManager : MonoBehaviour
 	
 	void Start()
 	{
-		player = GameObject.FindWithTag("Player");
-		dialogHolder = GameObject.Find("Dialog Holder");
-		dialogText = GameObject.Find("Dialog Text").GetComponent<Text>();
-		
-		if(textFile != null)
-		{
-			textLines = (textFile.text.Split('\n'));
-		}
-		
-		if(endAtLine == 0)
-		{
-			endAtLine = textLines.Length - 1;
-		}
-		
+		SetupText();
 		if(isActive)
 		{
 			ShowDialogHolder();

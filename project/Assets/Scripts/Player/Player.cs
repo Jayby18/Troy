@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
 	private PlayerCombat pc;
 	
 	public int health = 5;
+	public int exp = 0;
 
     public float speed;
     public float walkSpeed = 5f;
@@ -29,6 +30,8 @@ public class Player : MonoBehaviour
 		anim = GetComponent<Animator>();
 		rend = GetComponentInChildren<SpriteRenderer>();
 		pc = GetComponentInChildren<PlayerCombat>();
+		
+		Physics.IgnoreLayerCollision(10, 10, true);
     }
 
     void Update()
@@ -107,6 +110,11 @@ public class Player : MonoBehaviour
 		{
 			Respawn();
 		}
+	}
+	
+	public void GainExperiencePoints(int points)
+	{
+		exp += points;
 	}
 	
 	void KillYourself()

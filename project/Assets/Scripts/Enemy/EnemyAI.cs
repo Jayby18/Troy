@@ -54,8 +54,9 @@ public class EnemyAI : MonoBehaviour
 			Debug.Log("Hit player");
 			obj.SendMessage("ApplyDamage", 1);
 		}
-		else if(obj.layer == 9)
+		else if(obj.layer != 8)
 		{
+			transform.localEulerAngles = new Vector3(0, 180, 0);
 			if(moveRight == true)
 			{
 				moveRight = false;
@@ -72,6 +73,7 @@ public class EnemyAI : MonoBehaviour
 		health -= damage;
 		if(health <= 0)
 		{
+			GameObject.FindWithTag("Player").SendMessage("GainExperiencePoints", 25);
 			Destroy(gameObject);
 		}
 	}

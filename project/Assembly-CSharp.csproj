@@ -46,6 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\NPCDialog.cs" />
      <Compile Include="Assets\Scripts\DialogManager.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyAI.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyCombat.cs" />
@@ -59,6 +60,7 @@
      <Compile Include="Assets\Scripts\PrologueActivator.cs" />
      <Compile Include="Assets\Scripts\Throwable.cs" />
      <None Include="Assets\Text\prologue.txt" />
+     <None Include="Assets\Text\npc1.txt" />
      <None Include="Assets\Text\tester_dialog.txt" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
  <Reference Include="UnityEngine.UI">
