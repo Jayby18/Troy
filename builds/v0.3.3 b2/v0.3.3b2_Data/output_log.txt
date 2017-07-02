@@ -1,0 +1,61 @@
+Mono path[0] = 'P:/Documents/Unity Projects/Troy/builds/v0.3.3 b2/v0.3.3b2_Data/Managed'
+Mono path[1] = 'P:/Documents/Unity Projects/Troy/builds/v0.3.3 b2/v0.3.3b2_Data/Mono'
+Mono config path = 'P:/Documents/Unity Projects/Troy/builds/v0.3.3 b2/v0.3.3b2_Data/Mono/etc'
+PlayerConnection initialized from P:/Documents/Unity Projects/Troy/builds/v0.3.3 b2/v0.3.3b2_Data (debug = 0)
+PlayerConnection initialized network socket : 0.0.0.0 55085
+Multi-casting "[IP] 192.168.1.10 [Port] 55085 [Flags] 3 [Guid] 2231213232 [EditorId] 3353483260 [Version] 1048832 [Id] WindowsPlayer(Jadens-Laptop) [Debug] 1" to [225.0.0.222:54997]...
+Waiting for connection from host on [0.0.0.0:55085]...
+PlayerConnection accepted from [192.168.1.10] handle:0x384
+Started listening to [0.0.0.0:55085]
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,defer=y,address=0.0.0.0:56232
+PlayerConnection already initialized - listening to [0.0.0.0:55085]
+Player data archive not found at `P:/Documents/Unity Projects/Troy/builds/v0.3.3 b2/v0.3.3b2_Data/data.unity3d`, using local filesystemInitialize engine version: 5.6.0p1 (6c0210300415)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: Intel(R) HD Graphics Family (ID=0xa16)
+    Vendor:   Intel
+    VRAM:     1106 MB
+    Driver:   20.19.15.4549
+Begin MonoManager ReloadAssembly
+Platform assembly: P:\Documents\Unity Projects\Troy\builds\v0.3.3 b2\v0.3.3b2_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading P:\Documents\Unity Projects\Troy\builds\v0.3.3 b2\v0.3.3b2_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: P:\Documents\Unity Projects\Troy\builds\v0.3.3 b2\v0.3.3b2_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading P:\Documents\Unity Projects\Troy\builds\v0.3.3 b2\v0.3.3b2_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: P:\Documents\Unity Projects\Troy\builds\v0.3.3 b2\v0.3.3b2_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading P:\Documents\Unity Projects\Troy\builds\v0.3.3 b2\v0.3.3b2_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: P:\Documents\Unity Projects\Troy\builds\v0.3.3 b2\v0.3.3b2_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading P:\Documents\Unity Projects\Troy\builds\v0.3.3 b2\v0.3.3b2_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: P:\Documents\Unity Projects\Troy\builds\v0.3.3 b2\v0.3.3b2_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading P:\Documents\Unity Projects\Troy\builds\v0.3.3 b2\v0.3.3b2_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: P:\Documents\Unity Projects\Troy\builds\v0.3.3 b2\v0.3.3b2_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading P:\Documents\Unity Projects\Troy\builds\v0.3.3 b2\v0.3.3b2_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+- Completed reload, in  0.103 seconds
+Platform assembly: P:\Documents\Unity Projects\Troy\builds\v0.3.3 b2\v0.3.3b2_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: P:\Documents\Unity Projects\Troy\builds\v0.3.3 b2\v0.3.3b2_Data\Managed\System.dll (this message is harmless)
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
+<RI> Initialized touch support.
+UnloadTime: 4.049836 ms
+Recieved text
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+DialogManager:AddDialogText(TextAsset) (at P:\Documents\Unity Projects\Troy\project\Assets\Scripts\DialogManager.cs:82)
+PrologueActivator:Start() (at P:\Documents\Unity Projects\Troy\project\Assets\Scripts\PrologueActivator.cs:15)
+ 
+(Filename: P:/Documents/Unity Projects/Troy/project/Assets/Scripts/DialogManager.cs Line: 82)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at DialogManager.ShowDialogHolder () [0x00008] in P:\Documents\Unity Projects\Troy\project\Assets\Scripts\DialogManager.cs:70 
+  at DialogManager.AddDialogText (UnityEngine.TextAsset _textFile) [0x00019] in P:\Documents\Unity Projects\Troy\project\Assets\Scripts\DialogManager.cs:85 
+  at PrologueActivator.Start () [0x00022] in P:\Documents\Unity Projects\Troy\project\Assets\Scripts\PrologueActivator.cs:15 
+ 
+(Filename: P:/Documents/Unity Projects/Troy/project/Assets/Scripts/DialogManager.cs Line: 70)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 2f3c -> priority: 1 
+  Thread -> id: 2aec -> priority: 1 
+Waiting for finish

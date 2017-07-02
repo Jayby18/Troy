@@ -9,6 +9,7 @@ public class DialogManager : MonoBehaviour
 	
 	[SerializeField]
 	private GameObject dialogHolder;
+	private GameObject dialogTextObject;
 	private Text dialogText;
 	
 	public TextAsset textFile;
@@ -21,7 +22,10 @@ public class DialogManager : MonoBehaviour
 	
 	void Start()
 	{
-		SetupText();
+		dialogHolder = GameObject.Find("Dialog Holder");
+		dialogTextObject = GameObject.Find("Dialog Text");
+		dialogText = dialogTextObject.GetComponent<Text>();
+		
 		if(isActive)
 		{
 			ShowDialogHolder();
@@ -34,9 +38,6 @@ public class DialogManager : MonoBehaviour
 		
 	void SetupText()
 	{
-		dialogHolder = GameObject.Find("Dialog Holder");
-		dialogText = GameObject.Find("Dialog Text").GetComponent<Text>();
-		
 		textLines = (textFile.text.Split('\n'));
 		endAtLine = textLines.Length - 1;
 	}
@@ -87,5 +88,10 @@ public class DialogManager : MonoBehaviour
 	public int GetCurrentLine()
 	{
 		return currentLine;
+	}
+	
+	public bool GetActiveSelf()
+	{
+		return isActive;
 	}
 }

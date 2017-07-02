@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-		//Movement:
+		//Movement speed:
         if(Input.GetKey(KeyCode.LeftShift))
         {
             speed = runSpeed;
@@ -46,13 +46,16 @@ public class Player : MonoBehaviour
             speed = walkSpeed;
         }
 
-        Movement();
-		
-		//Jumping:
-		if(Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
+		if(GameObject.Find("DialogManager").GetComponent<DialogManager>().GetActiveSelf() == false)
 		{
-			Debug.Log("Jumping...");
-			pm.Jump(jumpSpeed);
+			Movement();
+			
+			//Jumping:
+			if(Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
+			{
+				Debug.Log("Jumping...");
+				pm.Jump(jumpSpeed);
+			}
 		}
 		
 		//Escape to main menu:
