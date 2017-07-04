@@ -51,6 +51,9 @@ public class DialogManager : MonoBehaviour
 		
 		if(currentLine > endAtLine)
 		{
+			textFile = null;
+			textLines = null;
+			endAtLine = 0;
 			HideDialogHolder();
 		}
 		

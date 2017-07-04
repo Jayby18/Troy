@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/prologue.unity
+- path: Assets/Scenes/achilles death.unity
   isLoaded: 1
   isActive: 1

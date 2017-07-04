@@ -74,6 +74,7 @@ public class EnemyAI : MonoBehaviour
 		if(health <= 0)
 		{
 			GameObject.FindWithTag("Player").SendMessage("GainExperiencePoints", 25);
+			GameObject.FindWithTag("Player").SendMessage("CountEnemy");
 			Destroy(gameObject);
 		}
 	}

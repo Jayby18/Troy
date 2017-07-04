@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
 	
 	public int health = 5;
 	public int exp = 0;
+	
+	public int currentEnemyCount;
 
     public float speed;
     public float walkSpeed = 5f;
@@ -74,13 +76,13 @@ public class Player : MonoBehaviour
 		if(xMov != 0 || zMov != 0)
 		{
 			anim.SetBool("Moving", true);
-			Debug.Log("Moving...");
 		}
 		else
 		{
 			anim.SetBool("Moving", false);
 		}
 		
+		/*
 		if(xMov < 0)
 		{
 			rend.flipX = true;
@@ -89,6 +91,7 @@ public class Player : MonoBehaviour
 		{
 			rend.flipX = false;
 		}
+		*/
 
         Vector2 movHorizontal = transform.right * xMov;
         Vector2 movVertical = transform.forward * zMov;
@@ -118,6 +121,30 @@ public class Player : MonoBehaviour
 	public void GainExperiencePoints(int points)
 	{
 		exp += points;
+	}
+	
+	public void CountEnemy()
+	{
+		currentEnemyCount--;
+		
+		if(currentEnemyCount <= 0)
+		{
+			CompleteLevel(-1);
+		}
+	}
+	
+	public void CompleteLevel(int nextLevel)
+	{
+		Debug.Log("Level Complete!");
+		
+		Scene currentScene = SceneManager.GetActiveScene();
+		
+		if(nextLevel == -1)
+		{
+			nextLevel = currentScene.buildIndex + 1;
+		}
+		
+		SceneManager.LoadScene(nextLevel);
 	}
 	
 	void KillYourself()
