@@ -7,6 +7,9 @@ public class PlayerWeapon : MonoBehaviour
 {
 	public float weaponDamage = 10f;
 	
+	public float offSetX;
+	public float offSetY;
+	
 	private GameObject player;
 	
 	void Start()
@@ -19,7 +22,8 @@ public class PlayerWeapon : MonoBehaviour
 	{
 		float xaxis = player.transform.position.x;
 		float yaxis = player.transform.position.y;
-		transform.position = new Vector2(xaxis + 0.35f, yaxis + 0.03f);
+		transform.position = new Vector2(xaxis + offSetX, yaxis + offSetY);
+		//0.35f, 0.03f
 	}
 	
 	void OnCollisionEnter2D(Collision2D collision)

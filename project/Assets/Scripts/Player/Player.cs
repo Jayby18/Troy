@@ -25,6 +25,11 @@ public class Player : MonoBehaviour
     public float jumpSpeed = 7f;
 	
 	public bool isGrounded;
+	
+	public bool isHorse;
+	public bool isSnake;
+	
+	public bool lastLevel;
 
     void Start()
     {
@@ -82,7 +87,6 @@ public class Player : MonoBehaviour
 			anim.SetBool("Moving", false);
 		}
 		
-		/*
 		if(xMov < 0)
 		{
 			rend.flipX = true;
@@ -90,8 +94,8 @@ public class Player : MonoBehaviour
 		else if(xMov > 0)
 		{
 			rend.flipX = false;
+			Debug.Log("Moving right");
 		}
-		*/
 
         Vector2 movHorizontal = transform.right * xMov;
         Vector2 movVertical = transform.forward * zMov;
@@ -137,14 +141,21 @@ public class Player : MonoBehaviour
 	{
 		Debug.Log("Level Complete!");
 		
-		Scene currentScene = SceneManager.GetActiveScene();
-		
-		if(nextLevel == -1)
+		if(!lastLevel)
 		{
-			nextLevel = currentScene.buildIndex + 1;
+			Scene currentScene = SceneManager.GetActiveScene();
+			
+			if(nextLevel == -1)
+			{
+				nextLevel = currentScene.buildIndex + 1;
+			}
+			
+			SceneManager.LoadScene(nextLevel);
 		}
-		
-		SceneManager.LoadScene(nextLevel);
+		else
+		{
+			GameObject.Find("HUDManager").SendMessage("EndLevel");
+		}
 	}
 	
 	void KillYourself()
@@ -169,6 +180,22 @@ public class Player : MonoBehaviour
 		else if(obj.tag == "ThrowablePickup")
 		{
 			pc.currentAmmo++;
+		}
+		
+		if(isHorse)
+		{
+			if(obj.tag == "WallOfTroy")
+			{
+				CompleteLevel(-1);
+			}
+		}
+		
+		if(isSnake)
+		{
+			if(obj.tag == "Enemy")
+			{
+				obj.SendMessage("ApplyDamage", 10f);
+			}
 		}
 	}
 	

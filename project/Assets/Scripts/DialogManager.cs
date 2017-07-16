@@ -88,13 +88,7 @@ public class DialogManager : MonoBehaviour
 		ShowDialogHolder();
 	}
 	
-	public int GetCurrentLine()
-	{
-		return currentLine;
-	}
+	public int GetCurrentLine()	{	return currentLine;	}
 	
-	public bool GetActiveSelf()
-	{
-		return isActive;
-	}
+	public bool GetActiveSelf()	{	return isActive;	}
 }
